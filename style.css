@@ -1,12 +1,16 @@
 td {
     border: 1px solid black;
-    height: 10px;
-    width: 10px;
+    height: 20px;
+    width: 20px;
     border-radius: 20%;
+    transition: all 200ms;
 }
 
 .game-board {
-    margin: 0 auto;
+    margin: 200px auto;
+    transform-origin: 50% 50%;
+    transition: all 500ms;
+    /*box-shadow: black 5px 5px 5px;*/
 }
 
 .alive {
