@@ -45,6 +45,17 @@ GameBoard.prototype.createGameBoard = function (gridSize) {
     }
 }
 
+
+GameBoard.prototype.tickTable = function() {
+    var table = this.el;
+    tds = table.getElementsByTagName("td");
+    for (var el in tds){
+        tick(tds[el]);
+    }
+    setTimeout(GameBoard.prototype.tickTable.bind(this),1500);
+}
+
+
 GameBoard.prototype.turnGameBoard = function () {
     this.deg+=3;
     this.el.style.transform = "rotate("+this.deg+"deg)";
@@ -153,15 +164,6 @@ function tick (el){
     }
 }
 
-function tickTable() {
-    var table = document.body.querySelector(".game-board");
-        tds = table.getElementsByTagName("td");
-    for (var el in tds){
-        tick(tds[el]);
-
-    }
-    setTimeout(tickTable,1500);
-}
 
 
 
@@ -171,9 +173,10 @@ var testTable = new GameBoard();
 testTable.createGameBoard();
 testTable.render();
 
+
 setTimeout(GameBoard.prototype.turnGameBoard.bind(testTable),200);
 
-setTimeout(tickTable,1500);
+setTimeout(GameBoard.prototype.tickTable.bind(testTable),1500);
 
 
 
